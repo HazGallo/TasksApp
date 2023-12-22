@@ -1,0 +1,9 @@
+.containerTask::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent !important;
+}
+
+.containerTask::-webkit-scrollbar-thumb {
+  background-color: red;
+  border-radius: 50px;
+}
