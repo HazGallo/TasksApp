@@ -11,7 +11,7 @@ export const Tasks = () => {
       {taskId.map((taskId, index) => (
         <Box
           key={taskId}
-          w={'30%'}
+          w={'100%'}
           display={'flex'}
           flexDirection={'column'}
           justifyContent={'center'}

@@ -13,21 +13,23 @@ interface Props {
 export const NavBar = (props: Props) => {
   const { title, onCLick, variant, task } = props;
   const [newTask, setNewTask] = useState('');
+  const [error, setError] = useState<string | null>(null); // Nuevo estado para manejar el mensaje de error
   const { addTask } = useTasks();
 
   const handleAddTask = () => {
     if (newTask.trim() === '') {
-      console.log('Empty');
-    }
-    if (newTask.trim() !== '') {
+      setError('Please enter a valid task.'); // Configura el mensaje de error
+    } else {
       addTask(newTask);
       setNewTask('');
+      setError(null); // Reinicia el mensaje de error
     }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setNewTask(e.target.value);
   };
+
   return (
     <Box
       w={'100%'}
@@ -58,6 +60,8 @@ export const NavBar = (props: Props) => {
       <Box w={'50px'} h={'50px'}>
         {task === 'yes' ? (
           <Modal
+            errorMessage="Add A Valid Task. Please"
+            titleModal="Add Task"
             value={newTask}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               handleChange(e);
@@ -73,7 +77,7 @@ export const NavBar = (props: Props) => {
         )}
       </Box>
 
-      <Box w={'10%'}>
+      <Box w={['25%', '20%', '10%']}>
         <Btn title={title} variant={variant} onClick={onCLick} />
       </Box>
     </Box>

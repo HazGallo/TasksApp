@@ -1,4 +1,4 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import { List } from '@iseazy/react-kit';
 
 import { useTasks } from 'src/store/tasks';
@@ -28,6 +28,7 @@ const TaskList = () => {
       display={'flex'}
       justifyContent={'center'}
       alignItems={'center'}
+      flexDirection={'column'}
     >
       <NavBar
         task="yes"
@@ -38,14 +39,11 @@ const TaskList = () => {
         }}
       />
 
-      {taskId.length === 0 && (
-        <Heading w={'100%'} ml={'25%'} textAlign={'center'} color={'white'}>
-          You don't have tasks yet
-        </Heading>
-      )}
-
+      <Text textTransform={'capitalize'} fontSize={'2xl'} color={'white'}>
+        You got {taskId.length} tasks
+      </Text>
       <Box
-        w={'50%'}
+        w={['90%', '90%', '90%', '60%']}
         h={'50%'}
         rounded={'md'}
         display={'flex'}
