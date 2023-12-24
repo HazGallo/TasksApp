@@ -16,6 +16,8 @@ type Story = StoryObj<typeof meta>;
 export const content: Story = {
   args: {
     value: 'Hi',
+    errorMessage: 'Add a valid Task',
+    titleModal: 'Add Task',
   },
   argTypes: {},
 };

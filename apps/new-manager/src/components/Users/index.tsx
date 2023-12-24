@@ -1,11 +1,11 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Spinner } from '@chakra-ui/react';
 import { List } from '@iseazy/react-kit';
 import { useNavigate } from 'react-router-dom';
 import { useFetchUsers } from 'src/hooks/useUsers';
 import { NavBar } from '../NavBar';
 
 export const Users = () => {
-  const { data } = useFetchUsers();
+  const { data, isLoading } = useFetchUsers();
 
   const navigate = useNavigate();
 
@@ -41,6 +41,18 @@ export const Users = () => {
         gap={'20px'}
         textAlign={'center'}
       >
+        {isLoading && (
+          <Box
+            bg={'#0D0D0D'}
+            display={'flex'}
+            justifyContent={'center'}
+            alignItems={'center'}
+            w={'100%'}
+            h={'100vh'}
+          >
+            <Spinner size={'xl'} color="red.500" />
+          </Box>
+        )}
         {data?.map((u, index) => (
           <List
             avatar="yes"

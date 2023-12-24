@@ -5,13 +5,15 @@ import { ChangeEvent } from 'react';
 import { Modal } from '../../components/Modal';
 
 interface Props {
+  value: string;
+  errorMessage: string;
+  titleModal: string;
   onClick: () => void;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  value: string;
 }
 
 export const ModalExample = (props: Props) => {
-  const { onClick, value, onChange } = props;
+  const { onClick, value, onChange, errorMessage, titleModal } = props;
 
   return (
     <Box
@@ -21,7 +23,13 @@ export const ModalExample = (props: Props) => {
       alignItems="center"
       justifyContent="center"
     >
-      <Modal onChange={onChange} onClick={onClick} value={value} />
+      <Modal
+        errorMessage={errorMessage}
+        onChange={onChange}
+        onClick={onClick}
+        value={value}
+        titleModal={titleModal}
+      />
     </Box>
   );
 };
